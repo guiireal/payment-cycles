@@ -5,5 +5,5 @@ module.exports = (server) => {
   server.use("/api", router);
 
   const billingCycle = require("./restful");
-  billingCycle.register(router, "billing-cycles");
+  billingCycle.register(router, "/billing-cycles");
 };

@@ -1,11 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "src/loader.js",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon",
-    "prod": "pm2 start src/index.js --name payment-cycles"
+    "prod": "pm2 start src/loader.js --name payment-cycles"
   },
   "dependencies": {
     "cors": "^2.8.5",

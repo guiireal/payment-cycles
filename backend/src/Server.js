@@ -25,6 +25,8 @@ class Server {
   middlewares() {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
+    this.app.use(require("./middlewares/cors"));
+    this.app.use(require("express-query-int")());
   }
 
   database() {

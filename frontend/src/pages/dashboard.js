@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { getSummary } from "../actions/dashboardAction";
+import { getSummary } from "../actions/dashboardActions";
 
 import ContentHeader from "../common/template/ContentHeader";
 import Content from "../common/template/Content";

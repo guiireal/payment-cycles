@@ -1,9 +1,9 @@
 import api from "../services/api";
 
 export function getList() {
-  const request = axios.get("/billing-cycles");
+  const request = api.get("/billing-cycles");
   return {
-    type: "BILLING_CYCLES_FETCHED",
+    type: "BILLING_CYCLE_FETCHED",
     payload: request,
   };
 }

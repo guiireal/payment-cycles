@@ -4,7 +4,7 @@ import "../common/template/dependencies";
 import Header from "../common/template/Header";
 import Sidebar from "../common/template/Sidebar";
 import Footer from "../common/template/Footer";
-
+import Messages from "../common/msg/Messages";
 import Routes from "./routes";
 
 export default (props) => (
@@ -15,5 +15,6 @@ export default (props) => (
       <Routes />
     </div>
     <Footer />
+    <Messages />
   </div>
 );

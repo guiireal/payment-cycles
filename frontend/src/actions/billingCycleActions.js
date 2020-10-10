@@ -1,6 +1,6 @@
 import api from "../services/api";
 import { toastr } from "react-redux-toastr";
-import { reset, reset as resetForm } from "redux-form";
+import { reset as resetForm, initialize } from "redux-form";
 import { showTabs, selectTab } from "../actions/tabActions";
 
 export function getList() {
@@ -15,10 +15,10 @@ export function create(values) {
   return (dispatch) => {
     api
       .post("/billing-cycles", values)
-      .then((response) => {
+      .then(() => {
         toastr.success("Sucesso", "Operação realizada com sucesso!");
         dispatch([
-          resetForm("billingCycleForm"),
+          resetForm("billing-cycle-form"),
           getList(),
           selectTab("tab-list"),
           showTabs("tab-list", "tab-create"),
@@ -34,4 +34,12 @@ export function create(values) {
       payload: true,
     };
   };
+}
+
+export function showUpdate(billingCycle) {
+  return [
+    showTabs("tab-update"),
+    selectTab("tab-update"),
+    initialize("billing-cycle-form", billingCycle),
+  ];
 }

@@ -3,6 +3,8 @@ import { toastr } from "react-redux-toastr";
 import { reset as resetForm, initialize } from "redux-form";
 import { showTabs, selectTab } from "../actions/tabActions";
 
+const INITIAL_VALUES = {};
+
 export function getList() {
   const request = api.get("/billing-cycles");
   return {
@@ -17,12 +19,7 @@ export function create(values) {
       .post("/billing-cycles", values)
       .then(() => {
         toastr.success("Sucesso", "Operação realizada com sucesso!");
-        dispatch([
-          resetForm("billing-cycle-form"),
-          getList(),
-          selectTab("tab-list"),
-          showTabs("tab-list", "tab-create"),
-        ]);
+        dispatch(init());
       })
       .catch(({ response: { data } }) => {
         data.errors.forEach((error) => {
@@ -41,5 +38,14 @@ export function showUpdate(billingCycle) {
     showTabs("tab-update"),
     selectTab("tab-update"),
     initialize("billing-cycle-form", billingCycle),
+  ];
+}
+
+export function init() {
+  return [
+    showTabs("tab-list", "tab-create"),
+    selectTab("tab-list"),
+    getList(),
+    initialize("billing-cycle-form", INITIAL_VALUES),
   ];
 }
